@@ -23,9 +23,6 @@ return {
 
 		-- Autocompletion
 		"hrsh7th/cmp-nvim-lsp",
-
-		-- Better windows for code actions
-		-- "stevearc/dressing.nvim",
 	},
 	opts = {
 		servers = {
