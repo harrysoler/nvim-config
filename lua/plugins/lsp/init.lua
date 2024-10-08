@@ -19,7 +19,7 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 		-- Bottom right notifications
-		{ "j-hui/fidget.nvim", opts = {} },
+		"j-hui/fidget.nvim",
 
 		-- Autocompletion
 		"hrsh7th/cmp-nvim-lsp",
