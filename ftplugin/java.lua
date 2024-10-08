@@ -58,8 +58,12 @@ local config = {
 		"-data",
 		workspace_dir,
 	},
-
 	root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
+	init_options = {
+		extendedClientCapabilities = {
+			progressReportProvider = false,
+		},
+	},
 }
 
 require("jdtls").start_or_attach(config)

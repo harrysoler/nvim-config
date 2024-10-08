@@ -36,7 +36,7 @@ map("<C-k>", "<C-w><C-k>")
 
 -- Window resize
 map("<C-left>", ":vertical resize +3<CR>")
-map("<C-left>", ":vertical resize +3<CR>")
+map("<C-right>", ":vertical resize -3<CR>")
 map("<C-up>", ":horizontal resize +3<CR>")
 map("<C-down>", ":horizontal resize -3<CR>")
 
