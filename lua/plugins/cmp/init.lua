@@ -48,6 +48,7 @@ return {
 						end,
 					},
 				},
+				{ name = "crates" },
 			},
 		})
 	end,
