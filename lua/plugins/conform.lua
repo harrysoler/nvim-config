@@ -13,6 +13,12 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			rust = { "rustfmt" },
+            typescript = { "deno_fmt" },
+            typescriptreact = { "deno_fmt" },
+            javascript = { "deno_fmt" },
+            javascriptreact = { "deno_fmt" },
+            json = { "deno_fmt" },
+            jsonc = { "deno_fmt" },
 			["_"] = { "trim_whitespace" },
 		},
 		default_format_opts = {

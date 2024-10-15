@@ -27,7 +27,8 @@ return {
 	opts = {
 		servers = {
 			"rust_analyzer",
-            "vtsls"
+            "vtsls",
+            "deno"
 		},
 		tools = {
 			"stylua",
