@@ -28,7 +28,6 @@ return {
 		servers = {
 			"rust_analyzer",
             "vtsls",
-            "deno"
 		},
 		tools = {
 			"stylua",
