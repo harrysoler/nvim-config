@@ -31,6 +31,8 @@ return {
 		},
 		tools = {
 			"stylua",
+            "latexindent",
+            "bibtex-tidy"
 		},
 	},
 	config = function(_, opts)

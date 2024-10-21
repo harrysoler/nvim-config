@@ -19,6 +19,8 @@ return {
             javascriptreact = { "deno_fmt" },
             json = { "deno_fmt" },
             jsonc = { "deno_fmt" },
+            tex = { "latexindent" },
+            bib = { "bibtex-tidy" },
 			["_"] = { "trim_whitespace" },
 		},
 		default_format_opts = {
