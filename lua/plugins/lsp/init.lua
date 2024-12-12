@@ -25,8 +25,8 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 	},
 	opts = {
+        -- Here lay servers without specified config, if otherwise add to folder servers
 		servers = {
-			"rust_analyzer",
             "vtsls",
 		},
 		tools = {
