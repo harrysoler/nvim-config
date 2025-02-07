@@ -10,8 +10,8 @@ end
 
 return {
 	"neovim/nvim-lspconfig",
-	event = "BufReadPost",
-	cmd = { "Mason" },
+	event = { "BufReadPre", "BufNewFile" },
+	cmd = { "Mason", "LspInfo", "LspInstall", "LspUninstall" },
 	dependencies = {
 		-- Mason
 		{ "williamboman/mason.nvim", config = true },
