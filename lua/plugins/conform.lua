@@ -21,6 +21,7 @@ return {
             jsonc = { "deno_fmt" },
             tex = { "latexindent" },
             bib = { "bibtex-tidy" },
+            dart = { "dart_format" },
 			["_"] = { "trim_whitespace" },
 		},
 		default_format_opts = {
