@@ -25,14 +25,15 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 	},
 	opts = {
-        -- Here lay servers without specified config, if otherwise add to folder servers
+		-- Here lay servers without specified config, if otherwise add to folder servers
 		servers = {
-            "vtsls",
+			"rust_analyzer",
+			"vtsls",
 		},
 		tools = {
 			"stylua",
-            "latexindent",
-            "bibtex-tidy"
+			"latexindent",
+			"bibtex-tidy",
 		},
 	},
 	config = function(_, opts)
