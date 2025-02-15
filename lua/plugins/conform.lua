@@ -22,8 +22,15 @@ return {
             tex = { "latexindent" },
             bib = { "bibtex-tidy" },
             dart = { "dart_format" },
+            cs = { "csharpier" },
 			["_"] = { "trim_whitespace" },
 		},
+        formatters = {
+            scharpier = {
+                command = "dotnet-charpier",
+                args = { "--write-stdout", "--roll-forward LatestMajor" },
+            }
+        },
 		default_format_opts = {
 			async = true,
 			lsp_format = "fallback",

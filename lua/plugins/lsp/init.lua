@@ -34,6 +34,7 @@ return {
 			"stylua",
 			"latexindent",
 			"bibtex-tidy",
+			"csharpier",
 		},
 	},
 	config = function(_, opts)
