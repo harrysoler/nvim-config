@@ -23,6 +23,7 @@ return {
             bib = { "bibtex-tidy" },
             dart = { "dart_format" },
             cs = { "csharpier" },
+            go = { "goimports", "gofmt" },
 			["_"] = { "trim_whitespace" },
 		},
         formatters = {
