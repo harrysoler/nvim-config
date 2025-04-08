@@ -8,6 +8,7 @@ return {
 	dependencies = {
 		-- Extra capabilities
 		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 
 		-- Snnippets support
@@ -42,11 +43,7 @@ return {
 				{ name = "path" },
 				{
 					name = "buffer",
-					option = {
-						get_bufnrs = function()
-							return vim.api.nvim_list_bufs()
-						end,
-					},
+					keyword_length = 4,
 				},
 				{ name = "crates" },
 			},
