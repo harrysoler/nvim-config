@@ -1,4 +1,6 @@
 # Dependencies
 - latexmk: Latex compiler
-- deno-fmt: JS/TS formatter
+- deno & pnpm: for deno-fmt JS/TS formatter
 - goimports: GO imports formatter
+- dotnet-sdk: for csharpier and omnisharp tools
+- unzip: for omnisharp install
