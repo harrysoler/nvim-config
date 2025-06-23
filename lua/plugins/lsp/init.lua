@@ -9,45 +9,53 @@ local function attach_lsp_callback(callback)
 end
 
 return {
-	"neovim/nvim-lspconfig",
-	event = { "BufReadPre", "BufNewFile" },
-	cmd = { "Mason", "LspInfo", "LspInstall", "LspUninstall" },
-	dependencies = {
-		-- Mason
-		{ "williamboman/mason.nvim", config = true },
-		"williamboman/mason-lspconfig",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
+    {
+        -- Lua Language Server
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {
+            library = {
+                { path = '${3rd}/luv/library', words = { 'vim%.uv' }},
+            },
+        },
+    },
+    {
+        'neovim/nvim-lspconfig',
+        dependencies = {
+            { 'mason-org/mason.vim', opts = {} },
+            'mason-org/mason-lspconfig.nvim',
+            'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-		-- Bottom right notifications
-		"j-hui/fidget.nvim",
+            { 'j-hui/fidget.nvim', opts = {} },
 
-		-- Autocompletion
-		"hrsh7th/cmp-nvim-lsp",
-	},
-	opts = {
-		-- Here lay servers without specified config, if otherwise add to folder servers
-		servers = {
-			"rust_analyzer",
-			"vtsls",
-		},
-		tools = {
-			"stylua",
-			"latexindent",
-			"bibtex-tidy",
-			"csharpier",
-		},
-	},
-	config = function(_, opts)
-		attach_lsp_callback(function(event)
-			require("plugins.lsp.mappings")
+            'saghen/blink.cmp',
 
-			-- Setup autocmds
-			local client = vim.lsp.get_client_by_id(event.data.client_id)
-			require("plugins.lsp.highlight_hints")(client, event)
-			require("plugins.lsp.inlay_hints")(client, event)
-		end)
+        },
+        opts = {
+            -- Here lay servers without specified config, if need one with custom config then add it to servers folder
+            servers = {
+                "rust_analyzer",
+                "vtsls",
+            },
+            tools = {
+                "stylua",
+                "latexindent",
+                "bibtex-tidy",
+                "csharpier",
+            },
+        },
+        config = function(opts)
+            attach_lsp_callback(function(event)
+                require("plugins.lsp.mappings")
 
-		local folder_servers = require("plugins.lsp.servers")
-		require("plugins.lsp.mason")(folder_servers, opts)
-	end,
+                local client = vim.lsp.get_client_by_id(event.data.client_id)
+                require("plugins.lsp.highlight_hints")(client, event)
+                require("plugins.lsp.inlay_hints")(client, event)
+                require("plugins.lsp.diagnostics")
+
+                local configured_servers = require("plugins.lsp.servers")
+                require("plugins.lsp.cmp")(configured_servers, opts)
+            end)
+        end
+    }
 }

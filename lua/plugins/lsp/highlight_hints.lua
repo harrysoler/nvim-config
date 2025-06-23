@@ -4,11 +4,15 @@ local autocmd = vim.api.nvim_create_autocmd
 local lsp = vim.lsp
 
 local function is_highlight_hint_supported(client)
-	return client.supports_method(lsp.protocol.Methods.textDocument_documentHighlight)
+    return require("plugins.lsp.client_supports_method")(
+        client, 
+        vim.lsp.protocol.Methods.textDocument_documentHighlight, 
+        event.buf
+    )
 end
 
 return function(client, event)
-	if client and is_highlight_hint_supported then
+	if client and is_highlight_hint_supported(client, event) then
 		local highlight_augroup = autogroup("kickstart-lsp-highlight", { clear = false })
 
 		autocmd({ "CursorHold", "CursorHoldI" }, {
