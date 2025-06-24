@@ -22,30 +22,19 @@ return {
     {
         'neovim/nvim-lspconfig',
         event = { "BufReadPre", "BufNewFile" },
-        cmd = { "Mason", "LspInfo", "LspInstall", "LspUninstall" },
+        -- cmd = { "Mason", "LspInfo", "LspInstall", "LspUninstall" },
+        cmd = { "LspInfo", "LspInstall", "LspUninstall", "LspStart" },
         dependencies = {
-            { 'mason-org/mason.nvim', opts = {} },
-            'mason-org/mason-lspconfig.nvim',
-            'WhoIsSethDaniel/mason-tool-installer.nvim',
+            -- { 'mason-org/mason.nvim', opts = {} },
+            "dundalek/lazy-lsp.nvim",
+            -- 'mason-org/mason-lspconfig.nvim',
+            -- 'WhoIsSethDaniel/mason-tool-installer.nvim',
 
             { 'j-hui/fidget.nvim', opts = {} },
 
             'saghen/blink.cmp',
         },
-        opts = {
-            -- Here lay servers without specified config, if need one with custom config then add it to servers folder
-            servers = {
-                "rust-analyzer",
-                "vtsls",
-            },
-            tools = {
-                "stylua",
-                "latexindent",
-                "bibtex-tidy",
-                "csharpier",
-            },
-        },
-        config = function(_, opts)
+        config = function()
             attach_lsp_callback(function(event)
                 require("plugins.lsp.mappings")
 
@@ -57,10 +46,7 @@ return {
             require("plugins.lsp.diagnostics")
 
             local servers = require("plugins.lsp.servers")
-
-            print(vim.inspect(opts.servers))
-
-            require("plugins.lsp.cmp")(servers, opts)
+            require("plugins.lsp.cmp")(servers)
         end
     }
 }

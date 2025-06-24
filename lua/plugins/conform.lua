@@ -1,18 +1,18 @@
 local function format()
-	require("conform").format({ async = true })
+    require("conform").format({ async = true })
 end
 
 return {
-	"stevearc/conform.nvim",
-	event = { "BufWritePre" },
-	cmd = { "ConformInfo" },
-	keys = {
-		{ "<leader>cf", format, mode = "" },
-	},
-	opts = {
-		formatters_by_ft = {
-			lua = { "stylua" },
-			rust = { "rustfmt" },
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+        { "<leader>cf", format, mode = "" },
+    },
+    opts = {
+        formatters_by_ft = {
+            lua = { "stylua" },
+            rust = { "rustfmt" },
             typescript = { "deno_fmt" },
             typescriptreact = { "deno_fmt" },
             javascript = { "deno_fmt" },
@@ -24,23 +24,23 @@ return {
             dart = { "dart_format" },
             cs = { "csharpier" },
             go = { "goimports", "gofmt" },
-			["_"] = { "trim_whitespace" },
-		},
+            ["_"] = { "trim_whitespace" },
+        },
         formatters = {
             scharpier = {
                 command = "dotnet-charpier",
                 args = { "--write-stdout", "--roll-forward LatestMajor" },
             }
         },
-		default_format_opts = {
-			async = true,
-			lsp_format = "fallback",
-			timeout_ms = 500,
-		},
-	},
-	config = function(_, opts)
-		-- Format range gq
-		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-		require("conform").setup(opts)
-	end,
+        default_format_opts = {
+            async = true,
+            lsp_format = "fallback",
+            timeout_ms = 500,
+        },
+    },
+    config = function(_, opts)
+        -- Format range gq
+        vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+        require("conform").setup(opts)
+    end,
 }

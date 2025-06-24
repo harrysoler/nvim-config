@@ -1,5 +1,5 @@
 return {
-	"aserowy/tmux.nvim",
-	event = "VeryLazy",
-	opts = {},
+    "aserowy/tmux.nvim",
+    event = "VeryLazy",
+    opts = {},
 }
