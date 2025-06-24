@@ -1,16 +1,24 @@
 local lsp = vim.lsp
 
-local function get_all_server_names(configured_servers, default_servers)
-    local ensure_installed = vim.tbl_keys(configured_servers or {})
-    vim.list_extend(ensure_installed, default_servers.servers or {})
-    vim.list_extend(ensure_installed, default_servers.tools or {})
-end
+-- local function get_all_server_names(configured_servers, default_servers)
+--     local ensure_installed = vim.tbl_keys(configured_servers or {})
+--     vim.list_extend(ensure_installed, default_servers.servers or {})
+--     vim.list_extend(ensure_installed, default_servers.tools or {})
+--
+--     return ensure_installed
+-- end
 
-return function(configured_servers, default_servers)
+return function(servers, opts)
     local capabilities = require('blink.cmp').get_lsp_capabilities()
+    -- local ensure_installed = get_all_server_names(configured_servers, default_servers)
 
-    require('mason-tool-installer').setup { 
-        ensure_installed = get_all_server_names(configured_servers, default_servers)
+    local ensure_installed = vim.tbl_keys(servers or {})
+    vim.list_extend(ensure_installed, opts.servers or {})
+    vim.list_extend(ensure_installed, opts.tools or {})
+
+    require('mason-tool-installer').setup {
+        ensure_installed = ensure_installed,
+        auto_update = true,
     }
 
 	local common_handlers = {
@@ -31,5 +39,5 @@ return function(configured_servers, default_servers)
         },
     }
 
-	require("lspconfig.ui.windows").default_options.border = "rounded"
+    require("lspconfig.ui.windows").default_options.border = "rounded"
 end

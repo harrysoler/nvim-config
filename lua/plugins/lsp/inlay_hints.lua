@@ -1,6 +1,6 @@
 local lsp = vim.lsp
 
-local function is_inlay_hint_supported(client)
+local function is_inlay_hint_supported(client, event)
     return require("plugins.lsp.client_supports_method")(
         client, 
         vim.lsp.protocol.Methods.textDocument_inlayHint, 

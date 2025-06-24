@@ -8,7 +8,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = "plugins.lsp.init" },
-	{ import = "plugins.cmp.init" },
 	{ import = "plugins" },
 }, {
 	defaults = { lazy = true },
