@@ -13,10 +13,11 @@ return function(servers)
             "tailwindcss",
             "biome",
             "oxlint",
+            "basedpyright",
         },
         preferred_servers = {
             markdown = {},
-            python = { "basedpyright", "ruff" },
+            python = { "ruff" },
             rust = { "rust_analyzer" },
         },
         default_config = {
